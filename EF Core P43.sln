@@ -1,9 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.37111.16 d17.14
+VisualStudioVersion = 17.14.37111.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF Core P43", "EF Core P43\EF Core P43.csproj", "{857ADEB1-E3E6-48E9-AE7B-0C03044688AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WF_Students", "WF_Students\WF_Students.csproj", "{43A3E8AE-1FFB-4912-8088-E199C0A74B99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp Test", "ConsoleApp Test\ConsoleApp Test.csproj", "{59EF5ABB-27BE-453C-A498-9E46E14EBF3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cities (Migrations)", "Cities (Migrations)\Cities (Migrations).csproj", "{37C51FB7-7244-44CF-8D34-D1C270A37435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One-To-One (Person-Passport)", "One-To-One (Person-Passport)\One-To-One (Person-Passport).csproj", "{1C3D310D-72C0-4894-AF2C-D25689072889}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fisrt WinFormsApp", "Fisrt WinFormsApp\Fisrt WinFormsApp.csproj", "{032D75B6-3F75-480B-8B65-EE3558DD4073}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +25,26 @@ Global
 		{857ADEB1-E3E6-48E9-AE7B-0C03044688AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{857ADEB1-E3E6-48E9-AE7B-0C03044688AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{857ADEB1-E3E6-48E9-AE7B-0C03044688AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43A3E8AE-1FFB-4912-8088-E199C0A74B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43A3E8AE-1FFB-4912-8088-E199C0A74B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43A3E8AE-1FFB-4912-8088-E199C0A74B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43A3E8AE-1FFB-4912-8088-E199C0A74B99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59EF5ABB-27BE-453C-A498-9E46E14EBF3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59EF5ABB-27BE-453C-A498-9E46E14EBF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59EF5ABB-27BE-453C-A498-9E46E14EBF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59EF5ABB-27BE-453C-A498-9E46E14EBF3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C51FB7-7244-44CF-8D34-D1C270A37435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C51FB7-7244-44CF-8D34-D1C270A37435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C51FB7-7244-44CF-8D34-D1C270A37435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C51FB7-7244-44CF-8D34-D1C270A37435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C3D310D-72C0-4894-AF2C-D25689072889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C3D310D-72C0-4894-AF2C-D25689072889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C3D310D-72C0-4894-AF2C-D25689072889}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C3D310D-72C0-4894-AF2C-D25689072889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{032D75B6-3F75-480B-8B65-EE3558DD4073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{032D75B6-3F75-480B-8B65-EE3558DD4073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{032D75B6-3F75-480B-8B65-EE3558DD4073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{032D75B6-3F75-480B-8B65-EE3558DD4073}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
