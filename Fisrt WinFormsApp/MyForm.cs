@@ -1,4 +1,4 @@
-namespace Fisrt_WinFormsApp
+п»їnamespace Fisrt_WinFormsApp
 {
     public partial class MyForm : Form
     {
@@ -25,7 +25,7 @@ namespace Fisrt_WinFormsApp
             lblCount.Text = $"{count}";
         }
 
-        // обробник події Click для кнопки btnHello
+        // РѕР±СЂРѕР±РЅРёРє РїРѕРґС–С— Click РґР»СЏ РєРЅРѕРїРєРё btnHello
         private void btnHello_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"Hello, {tbName.Text}!", "Greeting",
@@ -37,11 +37,11 @@ namespace Fisrt_WinFormsApp
         {
             try
             {
-                double number1 = double.Parse(tbFirstNum.Text); // перетворення тексту з tbFirstNum у число з плаваючою комою
-                double number2 = double.Parse(tbSecondNum.Text); // перетворення тексту з tbSecondNum у число з плаваючою комою
-                double result = number1 + number2; // обчислення суми
-                lblResult.Text = result.ToString(); // відображення результату
-                lblResult.ForeColor = Color.Green; // встановлення кольору тексту результату
+                double number1 = double.Parse(tbFirstNum.Text); // РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ С‚РµРєСЃС‚Сѓ Р· tbFirstNum Сѓ С‡РёСЃР»Рѕ Р· РїР»Р°РІР°СЋС‡РѕСЋ РєРѕРјРѕСЋ
+                double number2 = double.Parse(tbSecondNum.Text); // РїРµСЂРµС‚РІРѕСЂРµРЅРЅСЏ С‚РµРєСЃС‚Сѓ Р· tbSecondNum Сѓ С‡РёСЃР»Рѕ Р· РїР»Р°РІР°СЋС‡РѕСЋ РєРѕРјРѕСЋ
+                double result = number1 + number2; // РѕР±С‡РёСЃР»РµРЅРЅСЏ СЃСѓРјРё
+                lblResult.Text = result.ToString(); // РІС–РґРѕР±СЂР°Р¶РµРЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚Сѓ
+                lblResult.ForeColor = Color.Green; // РІСЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РєРѕР»СЊРѕСЂСѓ С‚РµРєСЃС‚Сѓ СЂРµР·СѓР»СЊС‚Р°С‚Сѓ
             }
             catch (FormatException)
             {
@@ -49,7 +49,7 @@ namespace Fisrt_WinFormsApp
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 lblResult.Text = "Error data";
-                lblResult.ForeColor = Color.Red; // встановлення кольору тексту результату на червоний у випадку помилки
+                lblResult.ForeColor = Color.Red; // РІСЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РєРѕР»СЊРѕСЂСѓ С‚РµРєСЃС‚Сѓ СЂРµР·СѓР»СЊС‚Р°С‚Сѓ РЅР° С‡РµСЂРІРѕРЅРёР№ Сѓ РІРёРїР°РґРєСѓ РїРѕРјРёР»РєРё
             }
         }
 
