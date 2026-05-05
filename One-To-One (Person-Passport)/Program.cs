@@ -7,26 +7,31 @@ Console.WriteLine("Person-Passport Example");
 using var db = new PersonDbContext();
 //Person person = new Person()
 //{
-//    Name = "Ann",
+//    Name = "Ihor",
 
 //    Passport = new Passport()
 //    {
-//        Number = "AB1234567"
+//        Number = "FF1234567"
 //    }
 //};
 
 //db.People.Add(person);
 //db.SaveChanges();
 DisplayPeopleWithPassports();
-ChangePassportNumber(1, "CD7654321");
+DisplayAllPassports();
 
-Console.WriteLine("After changing passport number:");
-DisplayPeopleWithPassports();
+//ChangePassportNumber(1, "AA7654321");
 
+//Console.WriteLine("After changing passport number:");
+//DisplayPeopleWithPassports();
+
+//Console.WriteLine("After removing person number:");
+RemovePerson(2);
+DisplayAllPassports();
 void DisplayPeopleWithPassports()
 {
     foreach (var p in db.People.Include(p=> p.Passport)) // Include для завантаження пов'язаного об'єкта Passport разом з Person
-        Console.WriteLine($"{p.Name} has passport number {p.Passport?.Number}");
+        Console.WriteLine($"{p.Id} {p.Name} has passport number {p.Passport?.Number}");
 }
 void ChangePassportNumber(int personId, string newNumber)
 {
@@ -36,4 +41,21 @@ void ChangePassportNumber(int personId, string newNumber)
         person.Passport.Number = newNumber;
         db.SaveChanges();
     }
+}
+void RemovePerson(int personId)
+{
+    var person = db.People.Find(personId);
+    var name = person?.Name;
+    if (person != null)
+    {
+        db.People.Remove(person);
+        db.SaveChanges();
+        Console.WriteLine($"Person with ID {personId} and name {name}  has been removed.");
+    }
+    
+}
+void DisplayAllPassports()
+{
+    foreach (var passport in db.Passports)
+        Console.WriteLine($"Passport number: {passport.Number}");   
 }

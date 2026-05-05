@@ -40,8 +40,8 @@
             btnFilter = new Button();
             btnClearFilter = new Button();
             groupBox1 = new GroupBox();
-            btnEdit = new Button();
             tbGroup = new TextBox();
+            btnEdit = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -53,6 +53,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(357, 274);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // btnAdd
@@ -125,7 +126,7 @@
             // 
             tbFilter.Location = new Point(412, 309);
             tbFilter.Name = "tbFilter";
-            tbFilter.PlaceholderText = "Enter group\\";
+            tbFilter.PlaceholderText = "Enter group";
             tbFilter.Size = new Size(207, 23);
             tbFilter.TabIndex = 8;
             // 
@@ -162,6 +163,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Student";
             // 
+            // tbGroup
+            // 
+            tbGroup.Location = new Point(204, 94);
+            tbGroup.Name = "tbGroup";
+            tbGroup.PlaceholderText = "Group";
+            tbGroup.Size = new Size(135, 23);
+            tbGroup.TabIndex = 8;
+            // 
             // btnEdit
             // 
             btnEdit.Location = new Point(412, 221);
@@ -171,14 +180,6 @@
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
-            // 
-            // tbGroup
-            // 
-            tbGroup.Location = new Point(204, 94);
-            tbGroup.Name = "tbGroup";
-            tbGroup.PlaceholderText = "Group";
-            tbGroup.Size = new Size(135, 23);
-            tbGroup.TabIndex = 8;
             // 
             // Form1
             // 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EF_Core_P43.Models
 {
     // клас сутності Студент
-    //[Table("Peoples")]
+   // [Table("Peoples")]
     public class Student // сутність, яка буде відображатися (мапитися) на таблицю в базі даних (Students)
     {
         // Id - буде як первинний ключ, EF Core сам розпізнає (неявно)
