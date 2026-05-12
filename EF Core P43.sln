@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fisrt WinFormsApp", "Fisrt 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WF One-To-One", "WF One-To-One\WF One-To-One.csproj", "{0CC5CC3B-F259-41C0-A0EC-0561D4D082F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One-To-Many", "One-To-Many\One-To-Many.csproj", "{01413C26-6689-4C84-A4F3-20A6410B1841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{0CC5CC3B-F259-41C0-A0EC-0561D4D082F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC5CC3B-F259-41C0-A0EC-0561D4D082F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC5CC3B-F259-41C0-A0EC-0561D4D082F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01413C26-6689-4C84-A4F3-20A6410B1841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01413C26-6689-4C84-A4F3-20A6410B1841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01413C26-6689-4C84-A4F3-20A6410B1841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01413C26-6689-4C84-A4F3-20A6410B1841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
