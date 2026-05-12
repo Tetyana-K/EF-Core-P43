@@ -23,5 +23,7 @@ namespace EF_Core_P43.Models
         
         public double Grade { get; set; } = 0;
 
+        public int Course { get; set; }
+
     }
 }

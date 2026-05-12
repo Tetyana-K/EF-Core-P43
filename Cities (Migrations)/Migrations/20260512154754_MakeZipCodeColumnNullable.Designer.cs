@@ -3,6 +3,7 @@ using Cities__Migrations_;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cities__Migrations_.Migrations
 {
     [DbContext(typeof(CitiesDbContext))]
-    partial class CitiesDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260512154754_MakeZipCodeColumnNullable")]
+    partial class MakeZipCodeColumnNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

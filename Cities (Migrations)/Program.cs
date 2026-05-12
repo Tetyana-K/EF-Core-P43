@@ -10,13 +10,13 @@ using var db = new CitiesDbContext();
 //    Population = 3_015_780
 //};
 
-City city2 = new City()
-{
-    Name = "Lviv",
-    Population = 721_301
-};
-db.Cities.Add(city2);
-db.SaveChanges();
+//City city2 = new City()
+//{
+//    Name = "Lviv",
+//    Population = 721_301
+//};
+//db.Cities.Add(city2);
+//db.SaveChanges();
 
 foreach (var c in db.Cities)
 {
@@ -62,6 +62,10 @@ ______________________________________________
     додаємо/видаляємо таблицю
     змінюємо зв’язки (Foreign Key)
 
+---------------------
+dotnet ef --version  подивитися версію інструменту EF Core CLI, який встановлений у вашій системі. Важливо, щоб версія інструменту була сумісною з версією EF Core, яку ви використовуєте у своєму проекті. Якщо інструмент не встановлений або його версія не відповідає вимогам, ви можете отримати помилки при спробі створити міграції або оновити базу даних.
 
+Якщо потрібно встановити  інструмент EF Core CLI, ви можете скористатися наступною командою:
+dotnet tool install --global dotnet-ef
 
  */

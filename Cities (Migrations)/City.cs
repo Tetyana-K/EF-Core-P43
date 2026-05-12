@@ -16,6 +16,6 @@ namespace Cities__Migrations_
         [MaxLength(50)]
         public string Country { get; set; } = string.Empty;
 
-        //public int ZipCode { get; set; }
+        public int? ZipCode { get; set; }
     }
 }

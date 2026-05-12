@@ -43,7 +43,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Location = new Point(28, 12);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(308, 255);
             dataGridView1.TabIndex = 0;
@@ -51,46 +51,46 @@
             // 
             // tbName
             // 
-            tbName.Location = new Point(359, 12);
+            tbName.Location = new Point(353, 12);
             tbName.Name = "tbName";
             tbName.PlaceholderText = "Name";
-            tbName.Size = new Size(100, 23);
+            tbName.Size = new Size(227, 23);
             tbName.TabIndex = 1;
             // 
             // tbStreet
             // 
-            tbStreet.Location = new Point(359, 165);
+            tbStreet.Location = new Point(353, 128);
             tbStreet.Name = "tbStreet";
             tbStreet.PlaceholderText = "Street";
-            tbStreet.Size = new Size(100, 23);
+            tbStreet.Size = new Size(227, 23);
             tbStreet.TabIndex = 2;
             // 
             // numAge
             // 
-            numAge.Location = new Point(477, 12);
+            numAge.Location = new Point(353, 70);
             numAge.Name = "numAge";
-            numAge.Size = new Size(120, 23);
+            numAge.Size = new Size(100, 23);
             numAge.TabIndex = 3;
             // 
             // tbCountry
             // 
-            tbCountry.Location = new Point(612, 165);
+            tbCountry.Location = new Point(353, 244);
             tbCountry.Name = "tbCountry";
             tbCountry.PlaceholderText = "Country";
-            tbCountry.Size = new Size(100, 23);
+            tbCountry.Size = new Size(227, 23);
             tbCountry.TabIndex = 4;
             // 
             // tbCity
             // 
-            tbCity.Location = new Point(487, 165);
+            tbCity.Location = new Point(353, 186);
             tbCity.Name = "tbCity";
             tbCity.PlaceholderText = "City";
-            tbCity.Size = new Size(100, 23);
+            tbCity.Size = new Size(227, 23);
             tbCity.TabIndex = 5;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(359, 232);
+            btnAdd.Location = new Point(28, 277);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(100, 23);
             btnAdd.TabIndex = 6;
@@ -100,9 +100,9 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(487, 232);
+            btnEdit.Location = new Point(222, 277);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(100, 23);
+            btnEdit.Size = new Size(105, 23);
             btnEdit.TabIndex = 7;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(628, 329);
             Controls.Add(btnEdit);
             Controls.Add(btnAdd);
             Controls.Add(tbCity);
