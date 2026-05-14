@@ -230,5 +230,24 @@ void PrintStudentsAndCourses()
     слідкує за їх станом (Added, Modified, Deleted)
 
 Clear()  = очищає цю  пам'ять (ніби кажемо EF Core : забудь усе, що ти зараз відслідковуєш)
+Коли використовувати
+1) Після великих операцій
+Наприклад:
+    foreach (var item in bigList)
+    {
+        db.Add(item);
+    }
+    db.SaveChanges();
+    db.ChangeTracker.Clear();
+щоб очистити пам’ять, не тримати тисячі об’єктів у трекері
+
+2)  довгих циклах
+    for (int i = 0; i < 10000; i++)
+    {
+        db.Add(new Dish());
+        db.SaveChanges();
+        db.ChangeTracker.Clear();
+    }
+3) Щоб уникнути "старих даних у пам’яті"
  */
 
