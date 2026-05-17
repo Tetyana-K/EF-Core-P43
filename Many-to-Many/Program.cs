@@ -31,7 +31,7 @@ var badCourse = new Course
     EndDate = new DateTime(2025, 5, 1) // Помилка  задання дати
 };
 
-//AddCourse(badCourse);
+AddCourse(badCourse);
 
 var mathCourse = new Course // ID = 4
 {
@@ -68,50 +68,16 @@ void AddCourse(Course course)
         return;
     }
 
-    // створюємо контекст валідації
-   // var context = new ValidationContext(course);
-    // створюємо список для зберігання результатів валідації
-   // var validationResults = new List<ValidationResult>();
-
-    // перевіряємо чи  об'єкт валідний
-    //if (!Validator.TryValidateObject(course, context, validationResults, validateAllProperties: true))
-    //{
-    //    // якщо хочемо потім побачити усі помилки валідації, якщо закоментувати рядки 83-87, то буде виведено лише першу помилку
-    //    var iValidatable = course as IValidatableObject;
-    //    //course.Validate(context) --- можна коротше
-    //    if (iValidatable != null)
-    //    {
-    //         var customResults = iValidatable.Validate(context);
-    //         validationResults.AddRange(customResults);
-    //    }
-    //    // виводимо помилки валідації
-    //    foreach (var validationResult in validationResults)
-    //    {
-    //        Console.WriteLine($"Validation error: {validationResult.ErrorMessage}");
-
-    //    }
-    //    Console.WriteLine($"Course '{course.Name}' not added.");
-    //}
-    // Перевірка валідності об'єкта
-    //if (!Validator.TryValidateObject(course, context, validationResults, validateAllProperties: true))
-    //{
-    //    // Виводимо лише першу помилку
-    //    var firstError = validationResults.FirstOrDefault();
-    //    if (firstError != null)
-    //    {
-    //        Console.WriteLine($"Validation error: {firstError.ErrorMessage}");
-    //    }
-
-    //    Console.WriteLine($"Course '{course?.Name}' not added.");
-
-    //}
-
-    //else
-    //{
-        // інакше - ВСЕ ДОБРЕ, пишемо курс у БД
+    if(Validate(course))
+    { 
         db.Courses.Add(course);
         db.SaveChanges();
-   // }
+        Console.WriteLine($"Course # {course.Id} '{course.Name}' added");
+    }
+    else
+    {
+        Console.WriteLine($"Course '{course.Name}' not added due to validation errors.");
+    }
 }
 
 void DeleteCourse(int courseId)
@@ -167,7 +133,7 @@ void UnenrollStudentFromCourse(int studentId, int courseId)
         return;
     }
 
-    // видаляємо зв’язок (курс зі списку курсів студента), тобто видаляємо курс зі списку курсів студента
+    // видаляємо зв`язок (курс зі списку курсів студента), тобто видаляємо курс зі списку курсів студента
     student.Courses.Remove(courseToRemove);
 
     db.SaveChanges();
@@ -224,30 +190,71 @@ void PrintStudentsAndCourses()
         }
     }
 }
+
+static bool Validate(Course course)
+{
+    //створюємо контекст валідації
+    var context = new ValidationContext(course);
+    // створюємо список для зберігання результатів валідації
+    var validationResults = new List<ValidationResult>();
+
+    // перевіряємо чи  об'єкт валідний
+    if (!Validator.TryValidateObject(course, context, validationResults, validateAllProperties: true))
+    {
+        // якщо хочемо потім побачити усі помилки валідації, якщо закоментувати рядки 83-87, то буде виведено лише першу помилку
+        var iValidatable = course as IValidatableObject;
+        //course.Validate(context) --- можна коротше
+        if (iValidatable != null)
+        {
+            var customResults = iValidatable.Validate(context);
+            validationResults.AddRange(customResults);
+        }
+        // виводимо помилки валідації
+        foreach (var validationResult in validationResults)
+        {
+            Console.WriteLine($"Validation error: {validationResult.ErrorMessage}");
+
+        }
+        Console.WriteLine($"Course '{course.Name}' not added.");
+    }
+    //Перевірка валідності об'єкта
+    if (!Validator.TryValidateObject(course, context, validationResults, validateAllProperties: true))
+    {
+        // Виводимо лише першу помилку
+        var firstError = validationResults.FirstOrDefault();
+        if (firstError != null)
+        {
+            Console.WriteLine($"Validation error: {firstError.ErrorMessage}");
+        }
+
+        return false;
+     }
+    return true;
+}
 /*
- * EF Core має "пам'ять" (Change Tracker), яка:
-    запам’ятовує всі об’єкти, які ми завантажили або змінили
-    слідкує за їх станом (Added, Modified, Deleted)
+* EF Core має "пам'ять" (Change Tracker), яка:
+   запам’ятовує всі об’єкти, які ми завантажили або змінили
+   слідкує за їх станом (Added, Modified, Deleted)
 
 Clear()  = очищає цю  пам'ять (ніби кажемо EF Core : забудь усе, що ти зараз відслідковуєш)
 Коли використовувати
 1) Після великих операцій
 Наприклад:
-    foreach (var item in bigList)
-    {
-        db.Add(item);
-    }
-    db.SaveChanges();
-    db.ChangeTracker.Clear();
+   foreach (var item in bigList)
+   {
+       db.Add(item);
+   }
+   db.SaveChanges();
+   db.ChangeTracker.Clear();
 щоб очистити пам’ять, не тримати тисячі об’єктів у трекері
 
 2)  довгих циклах
-    for (int i = 0; i < 10000; i++)
-    {
-        db.Add(new Dish());
-        db.SaveChanges();
-        db.ChangeTracker.Clear();
-    }
+   for (int i = 0; i < 10000; i++)
+   {
+       db.Add(new Dish());
+       db.SaveChanges();
+       db.ChangeTracker.Clear();
+   }
 3) Щоб уникнути "старих даних у пам’яті"
- */
+*/
 

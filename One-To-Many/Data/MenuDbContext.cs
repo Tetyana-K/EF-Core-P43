@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace One_To_Many.Data
 {
-    public   class MenuDbContext: DbContext
+    public class MenuDbContext: DbContext
     {
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Dish> Dishes { get; set; }
