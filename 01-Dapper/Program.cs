@@ -159,7 +159,7 @@ try
     }
     //Видалення даних
     Console.Write("Input user Id to delete: ");
-    int deleteId = int.Parse(Console.ReadLine());
+    int deleteId = int.Parse(Console.ReadLine()!);
     connection.Execute("DELETE FROM Users WHERE Id = @Id;", new { Id = deleteId });
     Console.WriteLine($"\n_____________Delete user with Id = {deleteId}");
     users = connection.Query<User>(sql).ToList();
@@ -185,3 +185,16 @@ ORM — це інструмент або бібліотека, яка:
     стовпці таблиць — як властивості об'єктів.
  
  */
+
+/*
+ * Dapper — це бібліотека об'єктно-реляційного відображення (ORM) з відкритим кодом 
+ * для застосунків .NET. Бібліотека дозволяє розробникам швидко та легко отримувати доступ до даних 
+ * з баз даних без необхідності написання виснажливого коду. 
+ * Dapper дозволяє, серед іншого, виконувати необроблені SQL-запити, 
+ * відображати результати на об'єкти та виконувати збережені процедури. 
+ * Вона доступна як пакет NuGet.
+ * 
+ * Dapper належить до сімейства інструментів, відомих як мікро-ORM . 
+ * Ці інструменти виконують лише частину функціональності повноцінних ORM, таких як Entity Framework Core ,
+ * але Dapper відомий своєю швидкістю 
+ * */
