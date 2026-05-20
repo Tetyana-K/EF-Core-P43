@@ -10,6 +10,8 @@ using var db = new StudentCourseDbContext();
 
 if (DataSeeder.SeedDatabase(db))
     Console.WriteLine("Database seeded with initial data.\n");
+else
+    Console.WriteLine("Database already contains data.\n");
 
 var students = db.Students.Include(s => s.Courses).ToList(); // Eager loading to include courses for each student
 Console.WriteLine("__________Students and their courses:");
@@ -21,17 +23,19 @@ foreach (var student in students)
         Console.WriteLine($"  - Course: {course.Name}, Description: {course.Description}");
     }
 }
+Console.WriteLine();
+PrintCoursesAndStudents();
 
-Console.WriteLine("\n_________Trying to a course with validation errors (end date before start date, short name, ...)");
-var badCourse = new Course
-{
-    Name = "Te_1", // name
-    Description = "Invalid because EndDate < StartDate",
-    StartDate = new DateTime(2025, 10, 1),
-    EndDate = new DateTime(2025, 5, 1) // Помилка  задання дати
-};
+//Console.WriteLine("\n_________Trying to a course with validation errors (end date before start date, short name, ...)");
+//var badCourse = new Course
+//{
+//    Name = "Te_1", // name
+//    Description = "Invalid because EndDate < StartDate",
+//    StartDate = new DateTime(2025, 10, 1),
+//    EndDate = new DateTime(2025, 5, 1) // Помилка  задання дати
+//};
 
-AddCourse(badCourse);
+//AddCourse(badCourse);
 
 var mathCourse = new Course // ID = 4
 {
@@ -43,20 +47,21 @@ var mathCourse = new Course // ID = 4
 
 //AddCourse(mathCourse);
 
-Console.WriteLine("\n_________Delete course with Id = 1");
-DeleteCourse(1);
-PrintStudentsAndCourses();
+Console.WriteLine("\n_________Delete course with Id = 4");
+DeleteCourse(4);
+PrintCoursesAndStudents();
 
-Console.WriteLine("\n_________Delete student with Id = 1");
-DeleteStudent(1);
-PrintStudentsAndCourses();
-
-//Console.WriteLine("\n_____Deleteing course with Id = 1 from student with Id = 2");
-//UnenrollStudentFromCourse (1, 2); // видаляємо курс з Id=2 у студента з Id=1
+//Console.WriteLine("\n_________Delete student with Id = 1");
+//DeleteStudent(1);
 //PrintStudentsAndCourses();
 
-//Console.WriteLine($"\n_____Ennrollment student  with Id = 1  to course with Id = 4");
-//EnrollStudentInCourse(1, 4); // Mark M. enrolled in Mathematics course
+//Console.WriteLine("\n_____Deleteing course with Id = 1 from student with Id = 2");
+//UnenrollStudentFromCourse (2, 3); // видаляємо курс з Id=3 у студента з Id=2
+//PrintStudentsAndCourses();
+
+//Console.WriteLine();
+//Console.WriteLine($"\n_____Ennrollment student  with Id = 2  to course with Id = 7");
+//EnrollStudentInCourse(2, 7); // . enrolled in Mathematics course
 //PrintStudentsAndCourses();
 
 
@@ -68,15 +73,15 @@ void AddCourse(Course course)
         return;
     }
 
-    if(Validate(course))
+    //if(Validate(course))
     { 
         db.Courses.Add(course);
         db.SaveChanges();
         Console.WriteLine($"Course # {course.Id} '{course.Name}' added");
     }
-    else
+    //else
     {
-        Console.WriteLine($"Course '{course.Name}' not added due to validation errors.");
+      //  Console.WriteLine($"Course '{course.Name}' not added due to validation errors.");
     }
 }
 
@@ -98,10 +103,12 @@ void DeleteCourse(int courseId)
 void DeleteStudent(int studentId)
 {
 
-    var student = db.Students.FirstOrDefault(s => s.Id == studentId);
+    //var student = db.Students.FirstOrDefault(s => s.Id == studentId);
+    var student = db.Students.Find(studentId);
     if (student != null)
     {
-        db.Students.Remove(student);
+        db.Students.Remove(student); // EF Core автоматично видалить всі зв`язки цього студента з курсами
+                                     // у проміжній таблиці CourseStudent
         db.SaveChanges();
         Console.WriteLine($"Student '{student.Name}' deleted successfully.");
     }
@@ -166,7 +173,9 @@ void EnrollStudentInCourse(int studentId, int courseId)
         return;
     }
 
-    student.Courses.Add(course);
+    student.Courses.Add(course); // додаємо курс до списку курсів студента,
+                                 // тобто створюємо зв`язок між студентом та курсом,
+                                 // а EF Core автоматично додасть запис до проміжної таблиці CourseStudent
     db.SaveChanges();
 
     Console.WriteLine($"Student '{student.Name}' successfully enrolled in course '{course.Name}'.");
@@ -187,6 +196,21 @@ void PrintStudentsAndCourses()
         foreach (var course in student.Courses)
         {
             Console.WriteLine($"  - Course: {course.Name}, Description: {course.Description}");
+        }
+    }
+}
+void PrintCoursesAndStudents()
+{
+    db.ChangeTracker.Clear(); // очищаємо трекер змін, щоб отримати актуальні дані
+    
+    var courses = db.Courses.Include(c => c.Students).ToList();
+    Console.WriteLine("__________Courses and their students:");
+    foreach (var course in courses)
+    {
+        Console.WriteLine($"#{course.Id} Course: {course.Name}, Description: {course.Description}");
+        foreach (var student in course.Students)
+        {
+            Console.WriteLine($"  - Student: {student.Name}, BirthDate: {student.BirthDate.ToShortDateString()}");
         }
     }
 }

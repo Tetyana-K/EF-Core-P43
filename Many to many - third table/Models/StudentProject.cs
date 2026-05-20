@@ -2,11 +2,11 @@
 {
     public class StudentProject
     {
-        public int StudentId { get; set; }
-        public Student Student { get; set; } = null!;
+        public int StudentId { get; set; } // зовнішній ключ до таблиці Student
+        public Student Student { get; set; } = null!; // навігаційна властивість до студента
 
-        public int ProjectId { get; set; }
-        public Project Project { get; set; } = null!;
+        public int ProjectId { get; set; } // зовнішній ключ до таблиці Project
+        public Project Project { get; set; } = null!; // навігаційна властивість до проекту
 
         public double Grade { get; set; }  //оцінка студента за проект
     }

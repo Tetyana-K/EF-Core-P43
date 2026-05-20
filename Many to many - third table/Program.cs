@@ -29,16 +29,17 @@ PrintStudents();
 PrintProjectsWithStudents();
 
 Console.WriteLine("\nAssigning students to projects with grades...");
-AssignStudentProject(4, 2, 97); // Assigning Sergii M. to Web API with grade 97
-PrintStudentsWithProjects();
+//AssignStudentProject(5, 3, 100); // Assigning Sergii M. to Web API with grade 100
+//PrintStudentsWithProjects();
+PrintProjectsWithStudents();
 
-Console.WriteLine("\nUpdating student project grade...");
-UpdateStudentProjectGrade(4, 2, 100); // Updating Sergii M.'s grade for Web API to 100
-PrintStudentsWithProjects();
+//Console.WriteLine("\nUpdating student project grade...");
+//UpdateStudentProjectGrade(4, 2, 100); // Updating Sergii M.'s grade for Web API to 100
+//PrintStudentsWithProjects();
 
-RemoveStudent(4); // Removing Sergii M. from the database
-PrintStudentsWithProjects();
-PrintProjects();
+//RemoveStudent(4); // Removing Sergii M. from the database
+//PrintStudentsWithProjects();
+//PrintProjects();
 
 void AddStudent(string name)
 {
@@ -126,9 +127,9 @@ void PrintProjects()
 
 void PrintStudentsWithProjects()
 {
-    var students = db.Students
-        .Include(s => s.StudentProjects)
-        .ThenInclude(sp => sp.Project)
+    var students = db.Students // тягнемо студентів
+        .Include(s => s.StudentProjects) // включаємо навігаційну властивість StudentProjects, щоб отримати зв'язки студент-проєкт
+        .ThenInclude(sp => sp.Project) // дотягуємо Проекти з сутності StudentProjects, включаємо навігаційну властивість Project для кожного зв'язку студент-проєкт, щоб отримати інформацію про проєкт
         .ToList();
 
     if (students.Count == 0)
@@ -143,7 +144,7 @@ void PrintStudentsWithProjects()
         Console.WriteLine($"Student: {s.Name}");
         foreach (var sp in s.StudentProjects)
         {
-            Console.WriteLine($"\tProject: {sp.Project.Title}, Grade: {sp.Grade}");
+            Console.WriteLine($"\tProject # {sp.ProjectId}: {sp.Project.Title}, Grade: {sp.Grade}");
         }
     }
 }
@@ -179,7 +180,7 @@ void PrintProjectsWithStudents()
     Console.WriteLine("_______Project-Student Assignments:");
     foreach (var p in projects)
     {
-        Console.WriteLine($"Project: {p.Title}");
+        Console.WriteLine($"Project # {p.Id}: {p.Title}");
         foreach (var sp in p.StudentProjects)
         {
             Console.WriteLine($"\tStudent: {sp.Student.Name}, Grade: {sp.Grade}");
